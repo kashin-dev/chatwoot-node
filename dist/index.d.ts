@@ -8,3 +8,4 @@ export default class ChatwootClient {
     constructor({ config }: Config);
     private getInstance;
 }
+export { ClientData } from './modules/contacts';

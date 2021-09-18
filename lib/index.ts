@@ -25,3 +25,5 @@ export default class ChatwootClient {
   }
 
 }
+
+export {ClientData} from './modules/contacts'
