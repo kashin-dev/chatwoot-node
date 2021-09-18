@@ -7,10 +7,10 @@ export interface ClientData {
   identifier?: number | string
   email?: string
   name?: string
-  city?: string
   phone_number?: string
   custom_attributes?: any
   inbox_id?: number
+  city?: string
 }
 
 export class Contacts extends Model {
