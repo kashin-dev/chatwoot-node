@@ -8,9 +8,9 @@ export interface Config {
 }
 
 interface ClientConfig {
-  host: string
+  host?: string
   apiVersion?: string
-  apiAccessToken: string
+  apiAccessToken?: string
 }
 
 export const buildClient = ({config}: Config) => {
