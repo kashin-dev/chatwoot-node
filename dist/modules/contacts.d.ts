@@ -6,6 +6,7 @@ export interface ClientData {
     phone_number?: string;
     custom_attributes?: any;
     inbox_id?: number;
+    city?: string;
 }
 export declare class Contacts extends Model {
     constructor({ client, accountId }: ModelArgs);
