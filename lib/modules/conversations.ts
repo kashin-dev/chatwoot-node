@@ -1,4 +1,4 @@
-import {Model, ModelArgs, AvailabilityStatus} from './model'
+import {Model, ModelArgs} from './model'
 
 export type ConversationStatus = "on" | "off"
 
@@ -36,51 +36,51 @@ export class Conversations extends Model {
     });
   }
 
-  toggleStatus(conversationId: number, status: AvailabilityStatus) {
+  toggleStatus(conversationId: number | string, status: ConversationStatus) {
     return this.client.post(`${this.path}/${conversationId}/toggle_status`, {
       status
     });
   }
 
-  assignAgent(conversationId: number, agentId: number) {
+  assignAgent(conversationId: number | string, agentId: number) {
     return this.client.post(
       `${this.path}/${conversationId}/assignments?assignee_id=${agentId}`,
       {}
     );
   }
 
-  assignTeam(conversationId: number, teamId: number) {
+  assignTeam(conversationId: number | string, teamId: number) {
     const params = {team_id: teamId};
     return this.client.post(`${this.path}/${conversationId}/assignments`, params);
   }
 
-  markMessageRead(conversationId: number) {
+  markMessageRead(conversationId: number | string) {
     return this.client.post(`${this.path}/${conversationId}/update_last_seen`);
   }
 
-  toggleTyping(conversationId: number, status = 'on') {
+  toggleTyping(conversationId: number | string, status = 'on') {
     return this.client.post(`${this.path}/${conversationId}/toggle_typing_status`, {
       typing_status: status
     });
   }
 
-  mute(conversationId: number) {
+  mute(conversationId: number | string) {
     return this.client.post(`${this.path}/${conversationId}/mute`);
   }
 
-  unmute(conversationId: number) {
+  unmute(conversationId: number | string) {
     return this.client.post(`${this.path}/${conversationId}/unmute`);
   }
 
-  sendEmailTranscript(conversationId: number, email: string) {
+  sendEmailTranscript(conversationId: number | string, email: string) {
     return this.client.post(`${this.path}/${conversationId}/transcript`, {email});
   }
 
-  getLabels(conversationId: number) {
+  getLabels(conversationId: number | string) {
     return this.client.get(`${this.path}/${conversationId}/labels`);
   }
 
-  updateLabels(conversationId: number, labels: string[]) {
+  updateLabels(conversationId: number | string, labels: string[]) {
     return this.client.post(`${this.path}/${conversationId}/labels`, {labels});
   }
 }
