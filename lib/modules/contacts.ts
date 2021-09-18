@@ -4,12 +4,12 @@ import {
 } from './model'
 
 export interface ClientData {
-  identifier: number | string
-  email: string
-  name: string
-  phone_number: string
-  custom_attributes: any
-  inbox_id: number
+  identifier?: number | string
+  email?: string
+  name?: string
+  phone_number?: string
+  custom_attributes?: any
+  inbox_id?: number
 }
 
 export class Contacts extends Model {

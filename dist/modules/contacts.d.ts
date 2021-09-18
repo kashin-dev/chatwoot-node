@@ -1,11 +1,11 @@
 import { ModelArgs, Model } from './model';
 export interface ClientData {
-    identifier: number | string;
-    email: string;
-    name: string;
-    phone_number: string;
-    custom_attributes: any;
-    inbox_id: number;
+    identifier?: number | string;
+    email?: string;
+    name?: string;
+    phone_number?: string;
+    custom_attributes?: any;
+    inbox_id?: number;
 }
 export declare class Contacts extends Model {
     constructor({ client, accountId }: ModelArgs);
