@@ -9,7 +9,7 @@ export interface Config {
 
 interface ClientConfig {
   host: string
-  apiVersion: string
+  apiVersion?: string
   apiAccessToken: string
 }
 

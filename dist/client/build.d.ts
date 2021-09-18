@@ -3,7 +3,7 @@ export interface Config {
 }
 interface ClientConfig {
     host: string;
-    apiVersion: string;
+    apiVersion?: string;
     apiAccessToken: string;
 }
 export declare const buildClient: ({ config }: Config) => import("axios").AxiosInstance;
