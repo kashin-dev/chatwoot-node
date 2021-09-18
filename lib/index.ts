@@ -19,11 +19,9 @@ export default class ChatwootClient {
     this.contacts = this.getInstance(Contacts)
     this.conversations = this.getInstance(Conversations)
   }
-
   private getInstance<T extends Model>(c: {new(m: ModelArgs): T}): (accountId: number) => T {
     return (accId: number) => new c({client: this.client, accountId: accId})
   }
 
 }
-
 export {ClientData} from './modules/contacts'
