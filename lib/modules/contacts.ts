@@ -1,7 +1,6 @@
 import {
-  ModelArgs,
-  Model
-} from './model'
+  Model, ModelArgs
+} from './model';
 
 export interface ClientData {
   identifier?: number | string
@@ -39,6 +38,10 @@ export class Contacts extends Model {
 
   search(q: string, page = 1, sort = 'name') {
     return this.client.get(`${this.path}/search?q=${q}&page=${page}&sort=${sort}`);
+  }
+
+  conversations(contactId: number) {
+    return this.client.get(`${this.path}/${contactId}/conversations`);
   }
 }
 
