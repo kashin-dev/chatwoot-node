@@ -6,6 +6,16 @@ class Conversations extends model_1.Model {
     constructor({ client, accountId }) {
         super({ client, path: 'conversations', accountId });
     }
+    create(inbox_id, contact_id, status, source_id, asignee_id, team_id) {
+        return this.client.post(this.path, {
+            source_id: source_id || null,
+            inbox_id,
+            contact_id,
+            status,
+            asignee_id,
+            team_id
+        });
+    }
     get(inbox_id, status, assignee_type, page, labels, team_id) {
         return this.client.get(this.path, {
             params: {

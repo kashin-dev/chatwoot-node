@@ -1,4 +1,4 @@
-import { ModelArgs, Model } from './model';
+import { Model, ModelArgs } from './model';
 export interface ClientData {
     identifier?: number | string;
     email?: string;
@@ -15,4 +15,5 @@ export declare class Contacts extends Model {
     update(id: string | number, c: ClientData): Promise<import("axios").AxiosResponse<any>>;
     create(c: ClientData): Promise<import("axios").AxiosResponse<any>>;
     search(q: string, page?: number, sort?: string): Promise<import("axios").AxiosResponse<any>>;
+    conversations(contactId: number): Promise<import("axios").AxiosResponse<any>>;
 }

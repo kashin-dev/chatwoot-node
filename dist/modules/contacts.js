@@ -21,5 +21,8 @@ class Contacts extends model_1.Model {
     search(q, page = 1, sort = 'name') {
         return this.client.get(`${this.path}/search?q=${q}&page=${page}&sort=${sort}`);
     }
+    conversations(contactId) {
+        return this.client.get(`${this.path}/${contactId}/conversations`);
+    }
 }
 exports.Contacts = Contacts;
