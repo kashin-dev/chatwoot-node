@@ -33,6 +33,15 @@ class Conversations extends model_1.Model {
             params: { q, page }
         });
     }
+    createMessage(conversationId, content, message_type, private_message, content_type, content_attributes) {
+        return this.client.post(`${this.path}/${conversationId}/messages`, {
+            content,
+            message_type,
+            ["private"]: private_message,
+            content_type,
+            content_attributes,
+        });
+    }
     toggleStatus(conversationId, status) {
         return this.client.post(`${this.path}/${conversationId}/toggle_status`, {
             status

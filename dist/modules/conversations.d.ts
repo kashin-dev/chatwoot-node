@@ -5,6 +5,7 @@ export declare class Conversations extends Model {
     create(inbox_id: string, contact_id: string, status: "open" | "resolved" | "pending", source_id?: string, asignee_id?: string, team_id?: string): Promise<import("axios").AxiosResponse<any>>;
     get(inbox_id: number, status: ConversationStatus, assignee_type: string, page: number, labels: string[], team_id: number): Promise<import("axios").AxiosResponse<any>>;
     search(q: string, page: number): Promise<import("axios").AxiosResponse<any>>;
+    createMessage(conversationId: number | string, content: string, message_type?: "outgoing" | "incoming", private_message?: boolean, content_type?: "input_email" | "cards" | "input_select" | "form" | "article", content_attributes?: Record<string, unknown>): Promise<import("axios").AxiosResponse<any>>;
     toggleStatus(conversationId: number | string, status: ConversationStatus): Promise<import("axios").AxiosResponse<any>>;
     assignAgent(conversationId: number | string, agentId: number): Promise<import("axios").AxiosResponse<any>>;
     assignTeam(conversationId: number | string, teamId: number): Promise<import("axios").AxiosResponse<any>>;

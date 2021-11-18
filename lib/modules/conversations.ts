@@ -47,6 +47,16 @@ export class Conversations extends Model {
     });
   }
 
+  createMessage(conversationId: number | string, content: string, message_type?: "outgoing" | "incoming", private_message?: boolean, content_type?: "input_email" | "cards" | "input_select" | "form" | "article", content_attributes?: Record<string, unknown>) {
+    return this.client.post(`${this.path}/${conversationId}/messages`, {
+      content,
+      message_type,
+      ["private"]: private_message,
+      content_type,
+      content_attributes,
+    })
+  }
+
   toggleStatus(conversationId: number | string, status: ConversationStatus) {
     return this.client.post(`${this.path}/${conversationId}/toggle_status`, {
       status
