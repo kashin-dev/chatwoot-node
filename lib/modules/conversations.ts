@@ -1,4 +1,4 @@
-import {Model, ModelArgs} from './model'
+import { Model, ModelArgs } from './model';
 
 export type ConversationStatus = "on" | "off"
 
@@ -8,6 +8,17 @@ export class Conversations extends Model {
     accountId
   }: ModelArgs) {
     super({client, path: 'conversations', accountId});
+  }
+
+  create(inbox_id: string, contact_id: string, status: "open" | "resolved" | "pending", source_id?: string, asignee_id?: string, team_id?: string) {
+    return this.client.post(this.path, {
+      source_id: source_id || null,
+      inbox_id,
+      contact_id,
+      status,
+      asignee_id,
+      team_id
+    })
   }
 
   get(
