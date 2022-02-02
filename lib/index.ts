@@ -1,21 +1,22 @@
-import {AxiosInstance} from 'axios'
-import {buildClient, Config} from './client/build'
-import {Model, ModelArgs} from './modules/model'
-import {Contacts} from './modules/contacts'
-import {Conversations} from './modules/conversations'
+import { AxiosInstance } from 'axios'
+import rateLimit from 'axios-rate-limit'
+import { buildClient, Config } from './client/build'
+import { Contacts } from './modules/contacts'
+import { Conversations } from './modules/conversations'
+import { Model, ModelArgs } from './modules/model'
 
 export default class ChatwootClient {
   private client: AxiosInstance
   public contacts: (accountId: number) => Contacts
   public conversations: (accountId: number) => Conversations
-  constructor({config}: Config) {
-    this.client = buildClient({
+  constructor({config}: Config, maxRPS=5) {
+    this.client = rateLimit(buildClient({
       config: {
         host: config.host,
         apiVersion: config.apiVersion,
         apiAccessToken: config.apiAccessToken
       }
-    })
+    }), {maxRPS})
     this.contacts = this.getInstance(Contacts)
     this.conversations = this.getInstance(Conversations)
   }
@@ -24,4 +25,5 @@ export default class ChatwootClient {
   }
 
 }
-export {ClientData} from './modules/contacts'
+export { ClientData } from './modules/contacts'
+
