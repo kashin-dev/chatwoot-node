@@ -14,10 +14,16 @@ interface ClientConfig {
 }
 
 export const buildClient = ({config}: Config) => {
-  return axios.create({
+  const conn = axios.create({
     baseURL: `${config.host || DEFAULT_HOST}/${config.apiVersion || DEFAULT_API_VERSION}`,
     timeout: 20000,
     headers: {api_access_token: config.apiAccessToken}
   })
+
+  conn.interceptors.response.use((response) => response, (error) => {
+    throw error
+  })
+
+  return conn
 }
 
